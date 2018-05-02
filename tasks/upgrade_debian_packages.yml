@@ -1,0 +1,10 @@
+---
+# Consult defaults/main.yml to learn about the role variables.
+- block:
+  - name: Upgrade packages on Debian based Linux systems using Apt
+    apt:
+      upgrade: full
+      update_cache: true
+    when: ansible_pkg_mgr == "apt"
+    notify: "Linux reboot for package upgrades"
+  become: true

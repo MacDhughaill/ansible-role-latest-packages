@@ -1,0 +1,15 @@
+---
+# `shell` is needed because `command` doesn't interpret `&&`.
+# `become` is needed to avoid a local interaction prompt.
+- name: Give Linux systems the reboot command
+  shell: sleep 2 && shutdown -r now "Ansible updates triggered"
+  async: 1
+  poll: 0
+  ignore_errors: true
+  changed_when: false
+  become: true
+
+- name: Wait for rebooted Linux systems
+  wait_for_connection:
+    delay: 120
+    timeout: 900

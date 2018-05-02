@@ -1,0 +1,3 @@
+---
+# How about we not reboot by default? After all, most Linux systems can be upgraded without being turned off for years!
+upgrade_packages_reboot_linux: false

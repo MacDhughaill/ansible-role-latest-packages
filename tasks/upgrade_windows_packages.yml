@@ -1,0 +1,10 @@
+---
+# Consult defaults/main.yml to learn about the role variables.
+- name: Upgrade packages on Windows systems using Chocolatey
+  win_chocolatey:
+    name: all
+    state: latest
+
+- name: Install latest updates for Windows
+  win_updates:
+  notify: "Windows reboot for updates"
