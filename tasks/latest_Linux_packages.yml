@@ -1,0 +1,17 @@
+---
+- block:
+  - name: Upgrade all packages on Fedora
+    dnf:
+      name: '*'
+      state: latest
+    notify: "Linux reboot for package upgrades"
+    when: ansible_distribution == "Fedora"
+
+  - name: Upgrade all packages on CentOS and RHEL
+    yum:
+      name: '*'
+      state: latest
+      update_cache: true
+    notify: "Linux reboot for package upgrades"
+    when: ansible_distribution == "CentOS"
+  become: true

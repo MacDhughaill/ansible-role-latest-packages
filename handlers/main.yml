@@ -1,8 +1,7 @@
 ---
-# Consult defaults/main.yml to learn about the role variables.
 - name: Linux reboot for package upgrades
-  include_tasks: linux_reboot.yml
-  when: upgrade_packages_reboot_linux
+  include_tasks: latest_packages_reboot_linux.yml
+  when: latest_packages_reboot_linux
 
 - name: Windows reboot for updates
   win_reboot:

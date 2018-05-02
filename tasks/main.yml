@@ -1,15 +1,5 @@
 ---
-- name: Upgrade packages in the Debian OS family
-  include_tasks: upgrade_debian_packages.yml
-  when: ansible_os_family == "Debian"
-
-- name: Upgrade packages in the Red Hat OS family
-  include_tasks: upgrade_redhat_packages.yml
-  when: ansible_os_family == "RedHat"
-
-- name: Upgrade packages in the Windows OS family
-  include_tasks: upgrade_windows_packages.yml
-  when: ansible_os_family == "Windows"
+- import_tasks: "latest_{{ ansible_system }}_packages.yml"
 
 - name: Initiate any queued reboots
   meta: flush_handlers
