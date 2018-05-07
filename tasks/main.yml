@@ -1,5 +1,9 @@
 ---
-- import_tasks: "latest_{{ ansible_system }}_packages.yml"
+- import_tasks: "latest_Linux_packages.yml"
+  when: ansible_system == "Linux"
+
+- import_tasks: "latest_Windows_packages.yml"
+  when: ansible_system == "Windows"
 
 - name: Initiate any queued reboots
   meta: flush_handlers
